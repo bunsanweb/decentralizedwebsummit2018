@@ -1,0 +1,329 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Decentralized Web Summit 2018: bunsanweb</title>
+    <style>
+/* font settings */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+body, h1, h2, h3 {font-family: 'Roboto';}
+h1, h2, h3 {font-weight: normal; font-weight: 400; margin-bottom: 0;}
+.remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
+
+/* theme class for slide pages */
+.inverse {
+  background: hsl(0, 0%, 15%);
+  color: hsl(0, 5%, 75%);
+}
+.inverse h1 {
+  text-align: center;
+  font-size: 2em;
+  color: hsl(0, 5%, 95%);
+  line-height: 0.8em;
+}
+.inverse h2 {
+  font-size: 1.8em;
+  color: hsl(0, 5%, 90%);
+  line-height: 0.8em;
+}
+.inverse a {
+  color: hsl(330, 75%, 50%);
+  text-decoration: none;
+}
+.inverse strong {
+  color: hsl(0, 30%, 50%);
+}
+
+/* custom styles for inline span notation */
+span.red {color: hsl(0, 90%, 50%);}
+
+/* print filling whole paper */
+@media print {
+  .remark-slide-scaler {
+    left: 5vw !important;
+    width: 90vw !important;
+    top: 5vh !important;
+    height: 90vh !important;
+    transform: scale(1) !important;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: inverse
+layout: true
+---
+class: center, middle
+
+# bunsanweb and decentralized web
+
+Decentralize Web Summit 2018
+
+---
+
+# Our view of the Web
+
+
+A Network of **Browser**s and hyperlinked **Resource**s 
+
+- Not a network of servers for their clients
+
+Resource is a **hyperlink collection** with its **URI** to GET/PUT/POST/...
+
+- Web-server is  a HTTP protocol handing **proxy** for the Resources
+
+---
+
+# Web of something
+
+Web of document: a browser communicates to document resources
+
+- Hyperlink can **directly link** resources **across** their Web servers
+
+Web of person: a browser communicates to person resources?
+
+- Web Service as a **proxy** of multiple person resources with systems
+- Browser just **provides** a personal information to POST
+  as a resource on Web Servers
+
+Web Service as **intermediary** between person and person
+
+- => a **central of inter person** network
+
+---
+
+# Views toward decentralization
+
+Decentralization of universal or monopolistic **systems**
+
+- Decentralized incentive/motivation systems 
+- Decentralized persistent storages
+- Fare contract systems for conflicted resources; such as name registry
+
+**Endpoint** enhancement for decentralize
+
+- Web browser enhanced with decentralizing features
+- Programming functionalities provided for decentralized architectures
+
+---
+
+# Our view of decentralizing the Web
+
+Return to **end-to-end** principle
+
+- => reducing centric intermediary factors from endpoints
+
+Web endpoint should become also an **endpoint of inter-person** systems
+
+- Browser could become a **resource of myself**
+- Browser could perform **endpoint-scripts for functions of the systems**
+  broken into decentralized manner
+
+---
+
+# What we "bunsanweb" tackle
+
+Endpoint-scripting
+
+-  mix server-side scripting features into client-side
+  for **both accessing and producing as Web resources**
+
+Universal event stream
+
+- for communicating unspecified endpoint scripts 
+  **without depending specific centric channels**
+
+Endpoint-relative hyperlinked space
+
+- each endpoint views resources **from each local
+  linked to the universal** on Web
+    - e.g. the "personal data" is also relative resource for each person.
+      it may link to "friends" on universal.
+
+---
+
+# bunsanweb:
+# endpoint-scripting
+
+Run programs on **vanilla** modern browsers
+
+- Program as JavaScript codes **within HTML**
+- Programming with the **standard JavaScript APIs** in Web browsers
+- Implementations are **hidden** behind the standards as much;<br />
+  such as DOM `Event`s or `fetch()`
+
+Scripts **directly respond** as Web Resource via "general reverse proxy"
+
+- With non-conflicted URI based on **public key hash** identity
+- Responding with a standard **`FetchEvent`** of `ServiceWorker` <br />
+  (and `Request`, `Response`, `Blob`, ...)
+
+Scripts handles remote resources with **loosely-coupled** way
+
+- **HTML** as primary format for `href` 
+- Document as abstract hyperlink container:
+  **URI links are special** from other property data
+- Today, HTML DOM can be wrapped with **ES6 Proxy**
+
+---
+
+# bunsanweb:
+# universal event stream
+
+**Content-based** event stream
+
+- For open network, event streams should **not be limited by upper-side** <br />
+  such as its publisher or published queue
+- Event is **filtered by its content** at the endpoint
+- Event is ordered when it **embeds parent events** as hyperlink
+
+Sharing **immutable** event document into universal
+
+- Identity (part of URI) as **content hash**
+- **Signed with actor**'s elliptic-curve crypto(ECC) key
+
+**Peer network** to expand their universal
+
+- Each peer has **own universal space** of events even if non-connected peers
+- Federated **peers make an union** universal space <br />
+  with fetching event lists (as resource) each other
+
+---
+
+# bunsanweb:
+# universal event stream (cont)
+
+"contexts" **axes** to make a space of events
+
+- Each tag in the "contexts" denotes some of events property structure<br />
+  **for filtering** or **for data processing**
+- Existence of tags puts these event <br/>
+  at the **position of a universal sphere**
+- It also locates a **region of events** such as streams or actors
+
+
+---
+
+# bunsanweb:
+# endpoint-relative hyperlinked space
+
+Endpoint-script itself is same **everywhere**
+
+- But its behavior is **different with local data values** where it runs
+- For scripts being available anywhere, data **locations should be same**
+
+**Standard structure for local** resources
+
+- It is similar as "start page" of web browser
+- Processing hyperlink relations **started from the relative top** resource
+
+Initial local resources 
+
+- Key-pairs: for identity of universal event stream
+- Personal profiles: as event actor
+- Script URIs: to run for local resources
+
+---
+
+# Change with bunsanweb:
+# open systems built on peer relations
+
+- Decompose a system as person-based features and aggregated data features <br/>
+  **with these data ownership**
+- Add new **peers for aggregated data** from existing peers
+- Make each **features as endpoint-scripts** to run on each peer
+  for sharing their data as privacy protected way; signed or encrypted with ECC
+- Open some of features to others, **share events** on universal event stream
+- Or apply existing open features of other systems for enhancing, <br/>
+  it also **accepts events** on universal event stream
+
+---
+
+# Connect to decentralized thecnnologies
+
+Decentralized Incentive system; such as crypto token systems
+
+- For **sustainability** of network
+- We think only a best-effort way of peers and reverse proxies
+- To be applying crypto token systems for them
+    - proof of burn, or self blockchain
+
+Smart contracts; such as Ethereum, chainspace
+
+- For **universal fairness** on whole of network
+- We think it is enough with peers for separated aggregated data
+    - Accepting aggregated data peers is depends on judgment of each peer
+- Replacing these aggregating peer with smart contracts between peers
+
+---
+
+# Connect to decentralized thecnnologies (cont)
+
+Decentralized persistent storage; such as IPFS, Dat
+
+- For **sharing content data**, not URI
+- On universal event stream, peer primary manages event list
+  as URLs of events
+- We think event data is also stored in peers (as they made there)
+- It can use decentralized storages to sharing event data
+
+Blockchain itself
+
+- For **strict ordering** of transactions/events
+- We think events are just bunch of events or partially ordered enough;
+  such as git branches/forks
+- But there is head of each local peer as one of branches/forks
+- Blockchain for events may be required for realizing smart contracts
+- It may use proof of burn, or local votes with event actor ids
+
+---
+
+# Info
+
+- https://bunsanweb.github.io/
+- https://github.com/bunsanweb/
+    - Central: https://github.com/bunsanweb/bunsan
+
+    </textarea>
+
+    <!-- remark.js -->
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    
+    <!-- option: katex -->
+    <script src="https://unpkg.com/katex/dist/katex.min.js"></script>
+    <script src="https://unpkg.com/katex/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/katex/dist/katex.min.css" />
+    
+    <!-- option: mermaid -->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <style>
+.inverse div.mermaid {
+  background-color: hsl(0, 5%, 75%);
+}
+    </style>
+    
+    <!-- init slide -->
+    <script>
+const slideshow = remark.create({
+  highlightStyle: "github", // highlight.js theme
+}, () => {
+  // KaTeX sessting
+  renderMathInElement(document.body, {delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false},
+  ]});
+});
+
+// valid rendering mermaid graphs on chrome
+// note for print: once open page before print
+mermaid.initialize({startOnLoad: false, cloneCssStyles: false});
+slideshow.on("afterShowSlide", s => {
+  for (const d of document.querySelectorAll("div.mermaid")) {
+    if (d.offsetWidth > 0) mermaid.init(undefined, d);
+  }
+});
+    </script>
+  </body>
+</html>

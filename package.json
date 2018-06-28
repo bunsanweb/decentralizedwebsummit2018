@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+        "remarkjs-pdf": "bellbind/remarkjs-pdf"
+    },
+    "scripts": {
+        "slide": "remarkjs-pdf slide/slide.html slide/slide.pdf",
+        "handout": "cd slide; pdfjam-slides6up slide.pdf"
+    },
+    "note": "pdfjam commands are in texlive distributions"
+}

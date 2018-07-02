@@ -34,6 +34,9 @@ h1, h2, h3 {font-weight: normal; font-weight: 400; margin-bottom: 0;}
 .inverse strong {
   color: hsl(0, 30%, 50%);
 }
+.inverse .remark-code {
+  font-size: 0.8em;
+}
 
 /* custom styles for inline span notation */
 span.red {color: hsl(0, 90%, 50%);}
@@ -203,6 +206,7 @@ Scripts handles remote resources with **loosely-coupled** way
   **URI links are special** from other property data
 - Today, HTML DOM can be wrapped with **ES6 Proxy**
 
+
 ---
 
 # bunsanweb:
@@ -330,6 +334,65 @@ Repos
 - hashnet: https://github.com/bunsanweb/hashnet
 - grp: https://github.com/bunsanweb/grp
 
+---
+
+# A1: Features behind the standard APIs
+
+```html
+<html>
+  <head><script type="module">
+import ReverseTarget from "./grp.m.js";
+(async function main() {
+  const target = await ReverseTarget.connect("http://localhost:3000/");
+  target.addEventListener("fetch", ev => {
+    ev.respondWith((async () => {
+      const body = `Hello World! from a Browser Tab: ${ev.request.url}`;
+      return new Response(body, {status: 200, headers: {
+        "content-type": "text/plain;charset=utf-8",
+        "access-control-allow-origin": "*",
+      }});
+    })();
+  }, false);
+  
+  const a = document.quertSelector("#link");
+  a.href = `${proxyUrl}${target.ident.id}/`;
+  a.innerHTML = `open proxy page: ${a.href}`;
+})().catch(console.error);  
+  </script></head>
+  <body><a id="link" target="_blank"></a></body>
+</html>
+```
+
+With `Response`, `body` also accepts standard `File`, `Blob` , and `ReadableStream`
+
+---
+
+# A2: Universal event content
+# between peers with grp
+
+<pre class="mermaid">
+graph TD;
+l0[GET me:/hash/event/6f7c69...] == fetch to my peer ==> l1;
+l1[GET http://localhost/event/6f7c49...] == HTTP to reverse proxy ==> l2
+l2[GET http://grp/78f886.../event/6f7c49...] == WebSocket to actor's peer ==> l3;
+l3[load event HTML content from local storage];
+</pre>
+
+---
+
+# A3:  endpoint relative link space
+# from local "me:" to universal
+
+<pre class="mermaid">
+graph TD;
+l0[me:/] -- actor --> l1;
+l1[me:/actor/78f886.../] -- pubkey --> l2[me:/actor/78f886.../pubkey];
+l0 -- events --> l3;
+l3[me:/hash/events/] -- event --> l4;
+l4[me:/hash/events/6f7c69.../] -- actor --> l5;
+l5[http://grp/78f886.../] -- pubkey --> l6;;
+l6[http://grp/78f886.../pubkey];
+</pre>
 
     </textarea>
 
@@ -344,7 +407,7 @@ Repos
     <!-- option: mermaid -->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <style>
-.inverse div.mermaid {
+.inverse pre.mermaid {
   background-color: hsl(0, 5%, 75%);
 }
     </style>
@@ -365,7 +428,7 @@ const slideshow = remark.create({
 // note for print: once open page before print
 mermaid.initialize({startOnLoad: false, cloneCssStyles: false});
 slideshow.on("afterShowSlide", s => {
-  for (const d of document.querySelectorAll("div.mermaid")) {
+  for (const d of document.querySelectorAll("pre.mermaid")) {
     if (d.offsetWidth > 0) mermaid.init(undefined, d);
   }
 });

@@ -7,6 +7,7 @@
     "handout": "cd slide; pdfjam-slides6up slide.pdf",
     "poster": "remarkjs-pdf poster/poster.html poster/poster.pdf",
     "poster-one": "cd poster; pdfjam-slides3up poster.pdf",
+    "pdfs": "npm run slide && npm run handout && npm run poster && npm run poster-one",
     "last": "echo dummy-line"
   },
   "note": "pdfjam commands are in texlive distributions"
